@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8"/>
+  </head>
+  
+
+  <body>
+    <div id="intro">
+      <h1>Spotify ID</h1>
+      <button id="start">Comenzar</button>
+    </div>
+
+    <div id="image-container">
+    </div>
+
+    <div class="section section-1">
+      <h1>De mainstream a variado</h1>
+      <!-- Your visualization for all songs goes here -->
+      <div id="circle-viz"></div>
+    </div>
+
+    <div class="section section-2">
+        <div class="container">
+            <div class="left">
+                <h2>Top songs</h2>
+                <div class="song-list">
+                    <!-- Create a list of songs here with .song-item elements -->
+                    <div class="song-item">
+                        <img src="resources/img.jpg" alt="Song Image">
+                        <div class="song-info">
+                            <h3>Song Name</h3>
+                            <p>Album</p>
+                        </div>
+                        <button class="play-btn">Play/Select</button>
+                    </div>
+                    <!-- Add more .song-item elements for each song -->
+                </div>
+            </div>
+            <div class="right" id="right">
+                <h2>Visualizacion cancion en vivo</h2>
+            </div>
+        </div>
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+
+    let endSecondViz =  false;
+    var element = document.getElementById('image-container');
+    let height = parseInt(window.getComputedStyle(element).getPropertyValue('height'));
+    let w = parseInt(window.getComputedStyle(element).getPropertyValue('width'));
+
+    window.addEventListener('scroll', function() {
+      // Get the current vertical scroll position
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      element.onwheel = function(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        if (element.scrollLeft == w*4) return;
+        if (element.scrollLeft == 0 && delta > 0) return;
+        element.scrollLeft -= delta * 80;
+        e.preventDefault();
+      };
+    });
+
+
+    let startButton = document.getElementById('start');
+    startButton.addEventListener('click',() => {
+      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    })
+
+  </script>
+  
+  <script src="scripts/curves.js"></script>
+  <script src="scripts/circle_viz.js"></script>
+  <script src="scripts/live_viz.js"></script>
+  
+</body>
+
+</html>
