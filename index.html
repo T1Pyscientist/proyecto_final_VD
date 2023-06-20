@@ -4,7 +4,8 @@
   <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script> -->
+    <script src="./scripts/p5.sound.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8"/>
   </head>
@@ -28,7 +29,7 @@
     <div class="section section-2">
         <div class="container">
             <div class="left">
-                <h2>Top songs</h2>
+                <h2>Top canciones</h2>
                 <div class="song-list">
                     <!-- Create a list of songs here with .song-item elements -->
                     <div class="song-item">
@@ -52,24 +53,24 @@
 
   <script>
 
-    let endSecondViz =  false;
     var element = document.getElementById('image-container');
-    let height = parseInt(window.getComputedStyle(element).getPropertyValue('height'));
     let w = parseInt(window.getComputedStyle(element).getPropertyValue('width'));
 
     window.addEventListener('scroll', function() {
       // Get the current vertical scroll position
       var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      element.onwheel = function(e) {
-        e = window.event || e;
-        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-        if (element.scrollLeft == w*4) return;
-        if (element.scrollLeft == 0 && delta > 0) return;
-        element.scrollLeft -= delta * 80;
-        e.preventDefault();
-      };
+
     });
+
+    element.onwheel = function(e) {
+      e = window.event || e;
+      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+      if (abs(element.scrollLeft - w*2.4) < 1) return;
+      if (element.scrollLeft == 0 && delta > 0) return;
+      element.scrollLeft -= delta * 50;
+      e.preventDefault();
+    };
 
 
     let startButton = document.getElementById('start');

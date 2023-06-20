@@ -121,3 +121,23 @@ canvas {
   justify-content: center;
   padding: 3%;
 }
+
+.restart-button {
+  display: inline-block;
+  height: 40px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: #F2F2F2;
+  color: #333333;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+
+
+.restart-button:hover {
+  background-color: #E6E6E6;
+}

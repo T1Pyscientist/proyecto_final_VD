@@ -2,7 +2,7 @@
 
 let songPlaying = function(sketch) {
 
-  let numFeatures = 8;
+  let numFeatures = 5;
   let seg_indx = 0;
   let offset = 110;
   let mins = [];

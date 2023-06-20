@@ -164,15 +164,9 @@ var circleSongs = function(sketch) {
                 s3.applyForce(sketch.createVector(x, y));
             }
         }    
-    
-
     }
 
     sketch.draw = function() {
-        step(sketch)
-    }
-    
-    let step = function(sketch) {
         sketch.background(24);
         sketch.translate(sketch.width/2, sketch.height/2)
 
@@ -239,7 +233,9 @@ function rotateText(x, y, radius, txt, sketch) {
     sketch.pop()
 }
 
+
 new p5(circleSongs);
+
 
 async function getTopTracks() {
 
