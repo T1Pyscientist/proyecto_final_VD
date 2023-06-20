@@ -21,7 +21,8 @@
     </div>
 
     <div class="section section-1">
-      <h1>De mainstream a variado</h1>
+      <h1 style="position: absolute;">De mainstream a variado</h1>
+      <!-- <img src="resources/img.jpg" style="position: absolute; width: 300px;" alt=""> -->
       <!-- Your visualization for all songs goes here -->
       <div id="circle-viz"></div>
     </div>
@@ -55,13 +56,6 @@
 
     var element = document.getElementById('image-container');
     let w = parseInt(window.getComputedStyle(element).getPropertyValue('width'));
-
-    window.addEventListener('scroll', function() {
-      // Get the current vertical scroll position
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-
-    });
 
     element.onwheel = function(e) {
       e = window.event || e;

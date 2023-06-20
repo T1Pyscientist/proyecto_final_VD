@@ -1,3 +1,5 @@
+let displayName;
+
 class Song {
     constructor(name, artist, album, features, p, time, popularity) {
         this.name = name;
@@ -33,19 +35,24 @@ class Song {
     display(p) {
         p.push();
         let colors = ['red', 'blue', 'white']
+        // Linear interpolation between colors
+        let c = p.lerpColor(p.color(255, 0, 0, 150), p.color(0, 255, 0, 150), this.time);
         p.noStroke();
-        p.fill(colors[this.time]);
+        p.fill(c);
         p.ellipse(this.x, this.y, this.popularity/5, this.popularity/5);
         p.pop();
     }
 
-    hover(p,w ,h) {
-        let d = p.dist(p.mouseX-w/2, p.mouseY-h/2, this.x, this.y);
+    hover(p) {
+        let d = p.dist(p.mouseX-p.width/2, p.mouseY-p.height/2, this.x, this.y);
         p.push();
         if (d < 10) {
-            p.fill(255);
-            p.ellipse(this.x, this.y, 10, 10);
-            p.text(this.name, this.x, this.y);
+            p.fill(255)
+            p.noStroke();
+            p.ellipse(this.x, this.y, this.popularity/5, this.popularity/5);
+            p.textSize(20);
+            p.textAlign(p.CENTER, p.CENTER);
+            p.text(this.name, 0, -p.height*0.4);
         }
         p.pop();
     }
@@ -76,9 +83,10 @@ var circleSongs = function(sketch) {
     let force = 3;
     
     sketch.setup = function() {
-        let canvas1 = sketch.createCanvas(w, h);
+        let canvas1 = sketch.createCanvas(w, sketch.windowHeight);
         canvas1.parent('circle-viz')
-        sketch.background(24);
+        sketch.background(31);
+        sketch.noLoop()
 
         for (let i = 0; i < 50; i++) {
             let element = top50_short.items[i];
@@ -125,7 +133,7 @@ var circleSongs = function(sketch) {
                     songFea2.liveness, 
                 ], 
                 sketch,
-                1,
+                0.5,
                 element2.popularity
             )
             data.push(s2);
@@ -153,7 +161,7 @@ var circleSongs = function(sketch) {
                     songFea3.liveness, 
                 ], 
                 sketch,
-                2,
+                1,
                 element3.popularity
             )
             data.push(s3);
@@ -163,21 +171,32 @@ var circleSongs = function(sketch) {
                 let y = sketch.sin(angle) * (s3.features[j] * force);
                 s3.applyForce(sketch.createVector(x, y));
             }
-        }    
+        }
+
+        const elementToAnimate = document.querySelector('#circle-viz');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    sketch.loop();
+                } else {
+                    sketch.noLoop();
+                }
+            });
+        }, {threshold: 0.5});
+        observer.observe(elementToAnimate);
+        
     }
 
     sketch.draw = function() {
-        sketch.background(24);
+        sketch.background(31);
         sketch.translate(sketch.width/2, sketch.height/2)
 
-        let static = false;
 
         for (let i = 0; i < data.length; i++) {
             data[i].update();
             sketch.fill(150 + i*50)
             data[i].display(sketch);
             data[i].hover(sketch, w, h);
-
         }
     
         // Circulo que rodea
@@ -185,9 +204,11 @@ var circleSongs = function(sketch) {
             let angle = sketch.map(i, 0, featuresSong, 0, sketch.TWO_PI);
             sketch.push();
             sketch.rotate(angle + sketch.PI/2)
-            rotateText(0, 0, 220, features_names[i], sketch)
+            rotateText(0, 0, 250, features_names[i], sketch)
             sketch.pop();
         }
+
+        drawGradientBox(-sketch.width*0.1, sketch.height*0.45, 150, 20, sketch.color(255, 0, 0), sketch.color(0, 255, 0),sketch)
     }
 }
 
@@ -233,39 +254,25 @@ function rotateText(x, y, radius, txt, sketch) {
     sketch.pop()
 }
 
+function drawGradientBox(x, y, w, h, color1, color2, p) {
+    p.push()
+    p.noStroke()
+    p.text("Nueva", x-20, y-10)
+    p.text("Vieja", x+w+5, y-10)
+
+    // Calculate the total number of steps for the gradient based on the height of the box
+    let steps = w;
+  
+    for (let i = 0; i < steps; i++) {
+        // Linearly interpolate between the two colors with the current step ratio
+        let currentColor = p.lerpColor(color1, color2, i / steps);
+        p.fill(currentColor);
+        p.rect(x+i, y, 1, h);
+    }
+    p.pop()
+}
 
 new p5(circleSongs);
 
 
-async function getTopTracks() {
-
-    let accessToken = localStorage.getItem('access_token_user')
-    const apiEndpoint = 'https://api.spotify.com/v1/me/top/tracks?limit=5';
-
-    const requestOptions = {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + accessToken
-        }
-    };
-
-    let data = await fetch(apiEndpoint, requestOptions)
-    return data.json();
-}
-
-async function getTracksFeatures(ids) {
-    let accessToken = localStorage.getItem('access_token_user')
-    let apiEndpoint = 'https://api.spotify.com/v1/audio-features?ids=' + ids;
-
-    const requestOptions = {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + accessToken
-        }
-    };
-
-    let data = await fetch(apiEndpoint, requestOptions)
-    return data.json();
-
-}
 

@@ -112,14 +112,9 @@ h2 {
   background-color: #1ED760;
 }
 
-canvas {
-  display: block;
-}
-
 #circle-viz {
   display: flex;
   justify-content: center;
-  padding: 3%;
 }
 
 .restart-button {
@@ -135,8 +130,6 @@ canvas {
   transition: background-color 0.3s ease;
   font-family: 'Courier New', Courier, monospace;
 }
-
-
 
 .restart-button:hover {
   background-color: #E6E6E6;

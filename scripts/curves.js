@@ -43,24 +43,24 @@ function setup() {
   push();
   fill(color(130, 134, 185))
   stroke(color(130, 134, 185));
-  translate(windowWidth/2 + offsetx, height/6 - 30)
-  rotate(PI/11);
+  translate(windowWidth/2 + offsetx, height*0.14)
+  rotate(-PI/11);
   text('Energy', 0, 0)
   pop();
   
   push();
   fill(color(134, 185, 130))
   stroke(color(134, 185, 130));
-  translate(windowWidth/2 + offsetx, height-height/5 - 35)
-  rotate(PI/11);
+  translate(windowWidth/2 + offsetx, height*0.6)
+  rotate(PI/25);
   text('Valence', 0, 0)
   pop();
   
   push();
   fill(color(185, 130, 134))
   stroke(color(185, 130, 134));
-  translate(windowWidth/2 + offsetx, height-height/3 - 30)
-  rotate(-PI/10);
+  translate(windowWidth/2 + offsetx, height*0.48)
+  rotate(PI/7);
   text('Acousticness', 0, 0)
   pop();
   
