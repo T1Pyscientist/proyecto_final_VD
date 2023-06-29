@@ -2,81 +2,114 @@
 <html lang="en">
 
   <head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script> -->
     <script src="./scripts/p5.sound.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8"/>
+    <title>Spotify Rewind</title>
   </head>
   
 
   <body>
-    <div id="intro">
-      <h1>Spotify ID</h1>
-      <button id="start">Comenzar</button>
+
+    <div id="nav">
+      <h3>‡SpotifyID</h3> 
     </div>
 
-    <div id="image-container">
-    </div>
+    <section id="intro">
+      <h1 style="margin-top: 10%;">Notas del Año</h1>
+      <h2 style="margin: 3%; width: 600px; align-self: center;">Explorando el historial de streaming en Spotify</h2>
 
-    <div class="section section-1">
-      <h1 style="position: absolute;">De mainstream a variado</h1>
-      <!-- <img src="resources/img.jpg" style="position: absolute; width: 300px;" alt=""> -->
-      <!-- Your visualization for all songs goes here -->
-      <div id="circle-viz"></div>
-    </div>
+      <h3 class="text" style="margin: 5%; width: 80vw; align-self: center;">¡Bienvenidos a mi recuento musical del año! En esta página, compartiremos los momentos más destacados, cambios y descubrimientos de mi historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical y explorar los ritmos que me acompañaron a lo largo de este año.</h3>
+      <div style="height: 15vh;"></div>
+    </section>
 
-    <div class="section section-2">
-        <div class="container">
-            <div class="left">
-                <h2>Top canciones</h2>
-                <div class="song-list">
-                    <!-- Create a list of songs here with .song-item elements -->
-                    <div class="song-item">
-                        <img src="resources/img.jpg" alt="Song Image">
-                        <div class="song-info">
-                            <h3>Song Name</h3>
-                            <p>Album</p>
-                        </div>
-                        <button class="play-btn">Play/Select</button>
-                    </div>
-                    <!-- Add more .song-item elements for each song -->
-                </div>
-            </div>
-            <div class="right" id="right">
-                <h2>Visualizacion cancion en vivo</h2>
-            </div>
+    <section id="tiempo-escuchado">
+      <h2 class="title">Tiempo escuchado</h2>
+      <h3 style="margin-top: 1%; width: 60vw;">Comenzando con una sorpresa reveladora, 
+        el tiempo escuchado en Spotify durante este año fue de [insertar número de horas].
+        Esto es equivalente a [insertar número de días] días de música.
+        Sin embargo, varía mucho de un mes a otro, como se muestra en la gráfica a continuación.
+      </h3>
+      <h3 style="font-weight: bold;">Minutos de streaming por mes</h3>
+      <div id="msPlayed" style="margin-top: 3%; margin-bottom: 15%;"></div>
+    </section>
+
+
+    <section id="historias-destacadas">
+      <h2 class="title">Historias destacadas</h2>
+      <h3 style="margin-top: 1%; width: 60vw;">
+        El año musical no se trata solo de estadísticas, sino también de historias.
+        Las canciones que escuchamos repetidas muchas veces pueden revelar algo sobre
+        el momento que vivimos. Aquí hay algunas de las historias destacadas de este año.
+      </h3>
+
+      <div class="carousel-container">
+        <div class="carousel">
+          <div class="carousel-item">
+            <h2>Stranger Things</h2>
+            <h3>El album del soundtrack fue el mas escuchado en agosto, semanas despues de que se estrenó la cuarta temporada.</h3>
+          </div>
+
+          <div class="carousel-item">2</div>
+          <div class="carousel-item">3</div>
+          <div class="carousel-item">4</div>
+          <div class="carousel-item">5</div>
         </div>
-    </div>
+      </div>
+      
+    </section>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <section id="cambio-popularidad">
+      <h2>De mainstream a alternativo</h2>
+    </section>
+
+    <section id="top-5-canciones">
+      <h2>Top 5 canciones: diversidad</h2>
+    </section>
+  
 
   <script>
+    window.addEventListener('scroll', function() {
 
-    var element = document.getElementById('image-container');
-    let w = parseInt(window.getComputedStyle(element).getPropertyValue('width'));
+      var intro = document.getElementById('intro');
+      var tiempoEscuchado = document.getElementById('tiempo-escuchado');
+      var historiasDestacadas = document.getElementById('historias-destacadas');
+      var cambioPopularidad = document.getElementById('cambio-popularidad');
+      var top5Canciones = document.getElementById('top-5-canciones');
 
-    element.onwheel = function(e) {
-      e = window.event || e;
-      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-      if (abs(element.scrollLeft - w*2.4) < 1) return;
-      if (element.scrollLeft == 0 && delta > 0) return;
-      element.scrollLeft -= delta * 50;
-      e.preventDefault();
-    };
+      var scrolled = window.pageYOffset;
+
+      var firstTreshold = intro.clientHeight/1.5;
+      var secondTreshold = firstTreshold + tiempoEscuchado.clientHeight/1.2 - 30;
 
 
-    let startButton = document.getElementById('start');
-    startButton.addEventListener('click',() => {
-      element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-    })
+
+      if(scrolled > firstTreshold && scrolled < secondTreshold) {
+        intro.style.top = scrolled - firstTreshold + 'px';
+      } else if (scrolled > secondTreshold) {
+        tiempoEscuchado.style.top = scrolled - secondTreshold  + 'px';
+      }
+
+
+    });
 
   </script>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
   
-  <script src="scripts/curves.js"></script>
+  <!-- <script src="scripts/curves.js"></script>
   <script src="scripts/circle_viz.js"></script>
-  <script src="scripts/live_viz.js"></script>
+  <script src="scripts/live_viz.js"></script> -->
+  <script src="scripts/tiempoStreaming.js"></script>
+  <script src="scripts/carrousel.js"></script>
+
   
 </body>
 
