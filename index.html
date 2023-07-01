@@ -8,8 +8,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
     <script src="./scripts/p5.sound.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="resources/icon.png">
     <meta charset="utf-8"/>
     <title>Spotify Rewind</title>
+    
   </head>
   
 
@@ -20,10 +22,15 @@
     </div>
 
     <section id="intro">
-      <h1 style="margin-top: 10%;">Notas del Año</h1>
+      <h1 style="margin-top: 10%;">Notas del año</h1>
       <h2 style="margin: 3%; width: 600px; align-self: center;">Explorando el historial de streaming en Spotify</h2>
 
-      <h3 class="text" style="margin: 5%; width: 80vw; align-self: center;">¡Bienvenidos a mi recuento musical del año! En esta página, compartiremos los momentos más destacados, cambios y descubrimientos de mi historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical y explorar los ritmos que me acompañaron a lo largo de este año.</h3>
+      <h3 class="text" style="margin: 5%; width: 80vw; align-self: center;">
+        ¡Bienvenidos a mi recuento musical del año! En esta página, compartiremos los momentos más destacados, 
+        cambios y descubrimientos de mi historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical 
+        y explorar los ritmos que me acompañaron a lo largo de este año. La información presentada aquí se basa en los
+        datos obtenidos de la API de Spotify y de la cuenta de Spotify de Juan. 
+      </h3>
       <div style="height: 15vh;"></div>
     </section>
 
@@ -51,24 +58,51 @@
         <div class="carousel">
           <div class="carousel-item">
             <h2>Stranger Things</h2>
-            <h3>El album del soundtrack fue el mas escuchado en agosto, semanas despues de que se estrenó la cuarta temporada.</h3>
+            <h3>El artista del soundtrack de la serie fue el más escuchado en agosto, semanas después de que se estrenó la cuarta temporada.</h3>
+            <h3 style="font-weight: bold; margin-top: 5%;">Artistas mas escuchados de agosto</h3>
+            <div id="plot1"></div>
           </div>
 
-          <div class="carousel-item">2</div>
-          <div class="carousel-item">3</div>
-          <div class="carousel-item">4</div>
-          <div class="carousel-item">5</div>
+          <div class="carousel-item">
+            <h2>Dua Lipa en Argentina</h2>
+            <h3>El mes que Dua Lipa estuvo en Argentina tuvo su mayor número de reproducciones</h3>
+            <h3 style="font-weight: bold; margin-top: 5%;">Reproducciones de Dua Lipa en 2022</h3>
+            <div id="plot2"></div>
+          </div>
+          <div class="carousel-item">
+            <h2>El récord de Coldplay</h2>
+            <h3>El mes que Coldplay estuvo en Argentina tuvo su mayor número de reproducciones</h3>
+            <h3 style="font-weight: bold; margin-top: 5%;">Reproducciones de Coldplay en 2022</h3>
+            <div id="plot3"></div>
+          </div>
+          <div class="carousel-item">
+            <h2>¡Campeones del mundo!</h2>
+            <h3>La semana después del 18 de diciembre, las canciones eran un [porciento] mas enérgicas que el promedio</h3>
+            <h3 style="font-weight: bold; margin-top: 5%;">Promedio energía semana del 19 de diciembre</h3>
+            <div id="plot4"></div>
+          </div>
+
         </div>
       </div>
       
     </section>
 
     <section id="cambio-popularidad">
-      <h2>De mainstream a alternativo</h2>
+      <h2 class="title">De mainstream a alternativo</h2>
+      <h3 style="margin-top: 1%; width: 60vw;">
+        Uno de los aspectos más interesantes de mi viaje musical este año fue el cambio 
+        gradual de escuchar música mainstream a explorar géneros alternativos. 
+        A medida que me adentré en nuevas propuestas musicales, descubrí artistas 
+        emergentes y sonidos frescos que me cautivaron. Te invito a que te sumerjas 
+        conmigo en esta travesía musical y descubras los motivos detrás de este cambio.
+      </h3>
+      <div id="circle-viz"></div>
+      <div id="extra-space" style="height: 200vh;"></div>
     </section>
 
     <section id="top-5-canciones">
       <h2>Top 5 canciones: diversidad</h2>
+      <div style="height: 100vh;"></div>
     </section>
   
 
@@ -104,11 +138,11 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
   
-  <!-- <script src="scripts/curves.js"></script>
   <script src="scripts/circle_viz.js"></script>
-  <script src="scripts/live_viz.js"></script> -->
+  <!-- <script src="scripts/live_viz.js"></script> -->
   <script src="scripts/tiempoStreaming.js"></script>
   <script src="scripts/carrousel.js"></script>
+  <script src="scripts/historias.js"></script>
 
   
 </body>

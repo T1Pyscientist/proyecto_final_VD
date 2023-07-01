@@ -6,12 +6,6 @@ d3.csv('resources/timeStreamMonth.csv').then(streamingData => {
         return d
     })
 
-    const monthNames = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-      ];
-
-    console.log(data)
 
     const plot = Plot.plot({
         marks: [
@@ -39,7 +33,6 @@ d3.csv('resources/timeStreamMonth.csv').then(streamingData => {
         },
 
 
-        color: "steelblue",
         margin: 60,
         insetLeft: 40,
         width: 800,
