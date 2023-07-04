@@ -250,65 +250,64 @@ section {
     margin-bottom: 15px;
 }
 
+
+
 .graph-button1 {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    background-color:#ffc96400;
+    color: rgb(0, 0, 0);
     /* Text color */
-    border: none;
-    width: 190px;
-    height: 70px;
+    border: 1px solid #000000;
+    width: 8vw;
+    height: 5vh;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 21px;
+    font-size: 16px;
     /* Smaller font size */
-    margin: 4px 2px;
+    margin: 1%;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 20px;
     /* Rounded corners */
-    transition-duration: 0.4s;
+    transition-duration: 0.2s;
     /* Transition effect duration */
-    margin-top: 50px;
-    margin-bottom: 10px;
 }
 
 .graph-button2 {
-    background-color: rgb(58, 58, 58);
-    color: rgb(255, 255, 255);
+    background-color:#ffc96400;
+    color: rgb(0, 0, 0);
     /* Text color */
-    border: none;
-    width: 190px;
-    height: 70px;
+    border: 1px solid #000000;
+    width: 8vw;
+    height: 5vh;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 21px;
+    font-size: 16px;
     /* Smaller font size */
-    margin: 4px 2px;
+    margin: 1%;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 20px;
     /* Rounded corners */
-    transition-duration: 0.4s;
+    transition-duration: 0.2s;
     /* Transition effect duration */
-    margin-top: 50px;
-    margin-bottom: 10px;
 }
 
 .graph-button1:hover {
     background-color: white;
     color: #57ad55;
-    border: 2px solid #57c82a;
+    border: 1px solid #5db33b;
     /* Border on hover */
 }
 
 .graph-button2:hover {
     background-color: white;
     color: #ff6347;
-    border: 2px solid #ff6666;
+    border: 1px solid #ff6666;
     /* Border on hover */
 }
 
 .button-container {
     display: flex;
     justify-content: baseline;
+    align-items: baseline;
 }
