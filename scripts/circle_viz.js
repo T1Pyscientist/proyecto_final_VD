@@ -8,6 +8,11 @@ let features_long;
 let top50_short;
 let top50_medium;
 let top50_long;
+let data;
+let features_names;
+let featuresSong;
+
+let description;
 
 class Song {
     constructor(i) {
@@ -34,7 +39,7 @@ class Song {
         p.push();
         let colors = ['red', 'blue', 'white']
         // Linear interpolation between colors
-        let c = p.lerpColor(p.color(255, 0, 0, 150), p.color(0, 255, 0, 150), t);
+        let c = p.lerpColor(p.color(180, 155, 200, 150), p.color(134, 198, 243, 150), t);
 
         // p.noStroke();
         p.fill(c);
@@ -45,11 +50,11 @@ class Song {
 
 var circleSongs = function(sketch) {
     
-    let data = [];
+    data = [];
     final_positions = [];
 
-    let features_names = ["Acousticness","Danceability","Instrumentalness", 'Energy', "Valence",'Speechiness', 'Liveness']
-    let featuresSong = features_names.length-2;
+    features_names = ["Acousticness","Danceability","Instrumentalness", 'Energy', "Valence",'Speechiness', 'Liveness']
+    featuresSong = features_names.length-2;
 
     let w = 750;
     let h = 750;
@@ -65,9 +70,8 @@ var circleSongs = function(sketch) {
         features_long = sketch.loadJSON('./resources/features_long.json')
     }
     
-    let force = 250;
     
-    sketch.setup = function() {
+    sketch.setup =  function() {
         let canvas1 = sketch.createCanvas(w, sketch.windowHeight);
         canvas1.parent('circle-viz')
         sketch.background(255);
@@ -75,54 +79,10 @@ var circleSongs = function(sketch) {
 
         t = 0;
         animating = false;
+        description = document.querySelector('#description');
 
-        for (let i = 0; i < 50; i++) {
-            final_positions.push([]);
-
-            let element = top50_short.items[i];
-            let songFea = features_short.audio_features[i];
-
-            let element2 = top50_medium.items[i];
-            let songFea2 = features_medium.audio_features[i];
-
-            let element3 = top50_long.items[i];
-            let songFea3 = features_long.audio_features[i];
-            
-            let s = new Song(i)
-            data.push(s);
-                
-            let fin_pos_short = sketch.createVector(0, 0);
-            let fin_pos_medium = sketch.createVector(0, 0);
-            let fin_pos_long = sketch.createVector(0, 0);
-
-            for (let j = 0; j < featuresSong; j++) {
-                let current_feature = songFea[features_names[j].toLocaleLowerCase()];
-                let current_feature2 = songFea2[features_names[j].toLocaleLowerCase()];
-                let current_feature3 = songFea3[features_names[j].toLocaleLowerCase()];
-
-                // Short songs final positions
-                let angle = sketch.map(j, 0, featuresSong, 0, sketch.TWO_PI);
-                let x = sketch.cos(angle) * (current_feature * force);
-                let y = sketch.sin(angle) * (current_feature * force);
-                fin_pos_short.add(sketch.createVector(x, y));
-
-                // Medium songs final positions
-                let x2 = sketch.cos(angle) * (current_feature2 * force);
-                let y2 = sketch.sin(angle) * (current_feature2 * force);
-                fin_pos_medium.add(sketch.createVector(x2, y2));
-
-                // Long songs final positions
-                let x3 = sketch.cos(angle) * (current_feature3 * force);
-                let y3 = sketch.sin(angle) * (current_feature3 * force);
-                fin_pos_long.add(sketch.createVector(x3, y3));
-
-            }
-
-            final_positions[i].push(fin_pos_long);
-            final_positions[i].push(fin_pos_medium);
-            final_positions[i].push(fin_pos_short);
-
-        }
+        setTimeout(initData(sketch), 1000);
+        
 
         const elementToAnimate = document.querySelector('#circle-viz');
         const observer = new IntersectionObserver((entries, observer) => {
@@ -144,6 +104,17 @@ var circleSongs = function(sketch) {
     sketch.draw = function() {
         sketch.background(255);
         sketch.translate(sketch.width/2, sketch.height/2)
+
+        let content;
+        if(t < 0.35) {
+            content = "Al comienzo del año, Spotify recomendaba canciones mas populares y similares, concentradas en una sola región."
+        } else if (t >= 0.35 && t < 0.65) {
+            content = "Con el paso de los meses, las recomendaciones se volvieron mas variadas y menos populares."
+        } else if (t >= 0.65) {
+            content = "Finalmente, en el último mes hubo una combinación de canciones populares y no populares, de distintas regiones."
+        }
+
+        description.textContent = content;
 
         for (let i = 0; i < data.length; i++) {
             sketch.fill(150 + i*50);
@@ -173,15 +144,10 @@ window.addEventListener('scroll', function(e) {
         t += deltaY / total_height;
         if (t > 1) {
             t = 1;
-            // animating = false;
         } else if (t < 0) {
             t = 0;
-            // animating = false;
         }
     }
-
-    console.log(t*2);
-
 });
 
 
@@ -226,7 +192,59 @@ function rotateText(x, y, radius, txt, sketch) {
     sketch.pop()
 }
 
-new p5(circleSongs);
+// new p5(circleSongs);
+var p5sk;
+var p5sk2;
+window.onload = () => {
+  p5sk = new p5(circleSongs);
+  p5sk2 = new p5(songPlaying);
+};
+
+function initData(sketch) {
+
+    let force = 250;
 
 
+    for (let i = 0; i < 50; i++) {
+        final_positions.push([]);
 
+        let songFea = features_short.audio_features[i];
+        let songFea2 = features_medium.audio_features[i];
+        let songFea3 = features_long.audio_features[i];
+        
+        let s = new Song(i)
+        data.push(s);
+            
+        let fin_pos_short = sketch.createVector(0, 0);
+        let fin_pos_medium = sketch.createVector(0, 0);
+        let fin_pos_long = sketch.createVector(0, 0);
+
+        for (let j = 0; j < featuresSong; j++) {
+            let current_feature = songFea[features_names[j].toLocaleLowerCase()];
+            let current_feature2 = songFea2[features_names[j].toLocaleLowerCase()];
+            let current_feature3 = songFea3[features_names[j].toLocaleLowerCase()];
+
+            // Short songs final positions
+            let angle = sketch.map(j, 0, featuresSong, 0, sketch.TWO_PI);
+            let x = sketch.cos(angle) * (current_feature * force);
+            let y = sketch.sin(angle) * (current_feature * force);
+            fin_pos_short.add(sketch.createVector(x, y));
+
+            // Medium songs final positions
+            let x2 = sketch.cos(angle) * (current_feature2 * force);
+            let y2 = sketch.sin(angle) * (current_feature2 * force);
+            fin_pos_medium.add(sketch.createVector(x2, y2));
+
+            // Long songs final positions
+            let x3 = sketch.cos(angle) * (current_feature3 * force);
+            let y3 = sketch.sin(angle) * (current_feature3 * force);
+            fin_pos_long.add(sketch.createVector(x3, y3));
+
+        }
+
+        final_positions[i].push(fin_pos_long);
+        final_positions[i].push(fin_pos_medium);
+        final_positions[i].push(fin_pos_short);
+
+    }
+}

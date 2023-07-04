@@ -27,7 +27,7 @@ let songPlaying = function(sketch) {
   sketch.setup = function() {
     let canvas2 = sketch.createCanvas(500, 500);
     sketch.frameRate(30);
-    canvas2.parent('right');
+    canvas2.parent('song-display');
     
     sketch.angleMode(sketch.DEGREES);
     fft = new p5.FFT();
@@ -64,7 +64,7 @@ let songPlaying = function(sketch) {
 
 
   sketch.draw = function() {
-    sketch.background(40, 40);
+    sketch.background(255);
     
     // Seleccionar el segmento actual
     let currentSegment = sketch.data1.segments[seg_indx];
@@ -78,7 +78,7 @@ let songPlaying = function(sketch) {
     sketch.push()
     sketch.translate(sketch.width / 2, sketch.height / 2);
     sketch.noFill();
-    sketch.stroke(150);
+    sketch.stroke(80);
     sketch.strokeWeight(1);
     for(let i=0; i<4; i++) {
       sketch.ellipse(0, 0, 120*i, 120*i)
@@ -109,7 +109,8 @@ let songPlaying = function(sketch) {
       
     sketch.push()
     sketch.noFill();
-    sketch.stroke(255, 150);
+    sketch.stroke(255, 200, 100, 255);
+    sketch.strokeWeight(5);
     sketch.beginShape();
 
       // First control point (same as first vertex)
@@ -130,7 +131,6 @@ let songPlaying = function(sketch) {
       let x2 = sketch.cos(angle) * (50 + featureValue);
       let y2 = sketch.sin(angle) * (50 + featureValue);
       
-      sketch.strokeWeight(3);
       sketch.curveVertex(x2, y2);
     }
     // Last control point (same as last vertex)
@@ -160,7 +160,7 @@ function rotateText2(x, y, radius, txt, sketch) {
   // https://p5js.org/reference/#/p5/textAlign
   sketch.textAlign(sketch.CENTER, sketch.BASELINE)
   sketch.textSize(16)
-  sketch.fill(255)
+  sketch.fill(35)
 
   // https://p5js.org/reference/#/p5/push
   // Save the current translation matrix so it can be reset
@@ -189,9 +189,8 @@ function rotateText2(x, y, radius, txt, sketch) {
   sketch.pop()
 }
 
-var p5sk;
-window.onload = () => {
-  p5sk = new p5(songPlaying);
-};
+// var p5sk2;
+// window.onload = () => {
+// };
 
-// new p5(sketch.songPlaying);
+// new p5(songPlaying);

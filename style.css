@@ -145,17 +145,79 @@ section {
 
 #circle-viz {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  justify-content: space-between;
 }
 
+/* -------------- */
 
-#top-5-canciones {
+#top-30-albums {
   background-color: #FFC864;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
-  top: -60px;
+  top: -30px;
   padding-top: 150px;
   padding-left: 12%;
+}
+
+#collage-container {
+  align-self: center;
+}
+
+.square {
+  border-radius: 3%;
+}
+
+
+/* -------------- */
+
+#top-5-canciones {
+  background-color: #ffffff;
+  box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
+  top: -30px;
+  padding-top: 150px;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+
+.song-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.song-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+
+.song-info {
+  flex: 1;
+}
+
+.play-btn {
+  background-color: #1DB954;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.play-btn:hover {
+  background-color: #1ED760;
 }
