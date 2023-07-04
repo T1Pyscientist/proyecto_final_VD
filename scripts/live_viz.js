@@ -1,5 +1,6 @@
 
 
+
 let songPlaying = function(sketch) {
 
   let numFeatures = 5;
@@ -100,7 +101,7 @@ let songPlaying = function(sketch) {
       
     // Dibujar texto de los features
     for (let i = 0; i < numFeatures; i++) {
-      let angle = sketch.map(i, 0, numFeatures, 0, 360) + offset; 
+      let angle = sketch.map(i, 0, numFeatures, 0, 360); 
       sketch.push();
       sketch.rotate(angle);
       rotateText2(0, 0, 190, features[i], sketch)
@@ -112,32 +113,34 @@ let songPlaying = function(sketch) {
     sketch.stroke(255, 200, 100, 255);
     sketch.strokeWeight(5);
     sketch.beginShape();
+    sketch.rotate(-90)
+
 
       // First control point (same as first vertex)
-    let angle = sketch.map(0, 0, numFeatures, 0, 360) + offset;
-    let featureValue = sketch.map(spectrum[0], mins[0], maxs[0], 0, 100);
-    let x1 = sketch.cos(angle) * 50;
-    let y1 = sketch.sin(angle) * 50;
+    let angle = sketch.map(numFeatures-1, 0, numFeatures, 0, 360);
+    let featureValue = sketch.map(spectrum[numFeatures-1], mins[numFeatures-1], maxs[numFeatures-1], 0, 100);
     let x2 = sketch.cos(angle) * (50 + featureValue);
     let y2 = sketch.sin(angle) * (50 + featureValue);
     sketch.curveVertex(x2, y2);
     
     for (let i = 0; i < numFeatures; i++) {
-      let angle = sketch.map(i, 0, numFeatures, 0, 360) + offset;
+      let angle = sketch.map(i, 0, numFeatures, 0, 360);
       let featureValue = sketch.map(spectrum[i], mins[i], maxs[i], 0, 100);
       
-      let x1 = sketch.cos(angle) * 50;
-      let y1 = sketch.sin(angle) * 50;
-      let x2 = sketch.cos(angle) * (50 + featureValue);
-      let y2 = sketch.sin(angle) * (50 + featureValue);
+      let x = sketch.cos(angle) * (50 + featureValue);
+      let y = sketch.sin(angle) * (50 + featureValue);
       
-      sketch.curveVertex(x2, y2);
+      sketch.curveVertex(x, y);
     }
-    // Last control point (same as last vertex)
-    angle = sketch.map(numFeatures - 1, 0, numFeatures, 0, 360) + offset;
-    featureValue = sketch.map(spectrum[numFeatures - 1], mins[numFeatures - 1], maxs[numFeatures - 1], 0, 100);
-    x1 = sketch.cos(angle) * 50;
-    y1 = sketch.sin(angle) * 50;
+
+    angle = 0;
+    featureValue = sketch.map(spectrum[0], mins[0], maxs[0], 0, 100);
+    x2 = sketch.cos(angle) * (50 + featureValue);
+    y2 = sketch.sin(angle) * (50 + featureValue);
+    sketch.curveVertex(x2, y2);
+
+    angle = sketch.map(1, 0, numFeatures, 0, 360);
+    featureValue = sketch.map(spectrum[1], mins[1], maxs[1], 0, 100);
     x2 = sketch.cos(angle) * (50 + featureValue);
     y2 = sketch.sin(angle) * (50 + featureValue);
     sketch.curveVertex(x2, y2);
@@ -171,7 +174,7 @@ function rotateText2(x, y, radius, txt, sketch) {
   sketch.translate(x, y)
 
   // First rotate half back so that middle char will come in the center
-  sketch.rotate(-chars.length * charSpacingAngleDeg / 2)
+  sketch.rotate((-chars.length * charSpacingAngleDeg / 2))
 
   for (let i = 0; i < chars.length; i++) {
       sketch.text(chars[i], 0, -radius)
