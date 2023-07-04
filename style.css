@@ -1,223 +1,318 @@
 @font-face {
-  font-family: 'Circular'; /* El nombre que quieras darle a la fuente */
-  src: url('./resources/fonts/CircularStd-Light2.otf') format('truetype'); /* Ruta relativa a la carpeta de las fuentes y nombre del archivo de la fuente */
-  /* Agrega más src para otros formatos de fuentes si tienes disponibles, como .woff o .woff2 */
+    font-family: 'Circular';
+    /* El nombre que quieras darle a la fuente */
+    src: url('./resources/fonts/CircularStd-Light2.otf') format('truetype');
+    /* Ruta relativa a la carpeta de las fuentes y nombre del archivo de la fuente */
+    /* Agrega más src para otros formatos de fuentes si tienes disponibles, como .woff o .woff2 */
 }
-
 
 
 /* GENERAL */
 
 html {
-  margin: 0px;
-  font-family: 'Circular',Helvetica,Arial,sans-serif;;
+    margin: 0px;
+    font-family: 'Circular', Helvetica, Arial, sans-serif;
+    ;
 }
 
-body{
-  margin: 0px;
+body {
+    margin: 0px;
 }
 
 h1 {
-  font-size: calc(2.5rem + 3.75 * ((100vw - 48rem) / 42));
-  margin: 0px;
-  padding: 0px;
-  text-align: center;
-  font-weight: 600;
+    font-size: calc(2.5rem + 3.75 * ((100vw - 48rem) / 42));
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    font-weight: 600;
 }
 
 h2 {
-  text-align: center;
-  font-weight: 300;
-  font-size: calc(1.625rem + .75 * ((100vw - 48rem) / 42));
+    text-align: center;
+    font-weight: 300;
+    font-size: calc(1.625rem + .75 * ((100vw - 48rem) / 42));
 }
 
 h3 {
-  font-weight: 100;
-  font-size: calc(1rem + 0.3 * ((100vw - 48rem) / 42));;
+    font-weight: 100;
+    font-size: calc(1rem + 0.3 * ((100vw - 48rem) / 42));
+    ;
 }
 
-.text{
-  text-align: center;
-  font-size: calc(1rem + 0.5 * ((100vw - 48rem) / 42));;
+.text {
+    text-align: center;
+    font-size: calc(1rem + 0.5 * ((100vw - 48rem) / 42));
+    ;
 }
 
 #nav {
-  /* background-color: #86C6F3; */
-  padding-left: 3%;
-  font-family: 'Circular', sans-serif;
-  font-size: large;
+    /* background-color: #86C6F3; */
+    padding-left: 3%;
+    font-family: 'Circular', sans-serif;
+    font-size: large;
 }
-
 
 
 /* SECCIONES */
+
 .title {
-  font-size: calc(2.125rem + 2.500 * ((100vw - 48rem) / 42));
-  font-weight:normal;
-  text-align: left;
-  margin: 0px;
-  /* margin-left: 12%; */
+    font-size: calc(2.125rem + 2.500 * ((100vw - 48rem) / 42));
+    font-weight: normal;
+    text-align: left;
+    margin: 0px;
+    /* margin-left: 12%; */
 }
 
 section {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
 }
+
 
 /* ------------ */
 
 #intro {
-  background-color: #8fc9f3;
+    background-color: #8fc9f3;
 }
 
 #tiempo-escuchado {
-  background-color: #ffffff;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
-  top: -30px;
-  padding-top: 150px;
-  padding-left: 12%;
+    background-color: #ffffff;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
+    top: -30px;
+    padding-top: 150px;
+    padding-left: 12%;
+    padding-bottom: 225px;
+    padding-right: 10%;
 }
+
 
 /* ------------ */
 
 #historias-destacadas {
-  background-color: #B9F5C1;
-  padding: 10%;
-  top: -30px;
-  overflow: hidden;
+    background-color: #B9F5C1;
+    padding: 10%;
+    top: -30px;
+    overflow: hidden;
 }
 
 .carousel-container {
-  margin-top: 5%;
-  margin-left: -200px;
-  margin-right: -200px;
-  overflow: hidden;
-  height: 80vh;
+    margin-top: 5%;
+    margin-left: -200px;
+    margin-right: -200px;
+    overflow: hidden;
+    height: 80vh;
 }
 
 .carousel {
-  display: flex;
-  width: 35vw;
-  height: 35vw;
-  transition: transform 0.3s ease-in-out;
-  cursor: grab;
+    display: flex;
+    width: 35vw;
+    height: 35vw;
+    transition: transform 0.3s ease-in-out;
+    cursor: grab;
 }
 
 .carousel-item {
-  flex: 0 0 auto;
-  width: 100%;
-  height: 100%;
-  padding: 2%;
-  padding-left: 3%;
-  box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 15px;
-  margin: 5%;
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    padding-left: 3%;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin: 5%;
 }
 
 .carousel-item h2 {
-  font-size: calc(1.625rem + .75 * ((100vw - 48rem) / 42));
-  font-weight: 300;
-  text-align: left;
-  margin: 0px;
-  padding: 0px;
+    font-size: calc(1.625rem + .75 * ((100vw - 48rem) / 42));
+    font-weight: 300;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
 }
 
 .carousel-item h3 {
-  font-size: calc(1rem + .2 * ((100vw - 48rem) / 42));
-  font-weight: 300;
-  overflow-wrap:normal;
-  margin: 0px;
-  padding: 0px;
+    font-size: calc(1rem + .2 * ((100vw - 48rem) / 42));
+    font-weight: 300;
+    overflow-wrap: normal;
+    margin: 0px;
+    padding: 0px;
 }
+
 
 /* ------------ */
 
 #cambio-popularidad {
-  background-color: #ffffff;
-  padding: 10%;
-  top: -30px;
+    background-color: #ffffff;
+    padding: 10%;
+    top: -30px;
 }
 
 #circle-viz {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
 }
+
 
 /* -------------- */
 
 #top-30-albums {
-  background-color: #FFC864;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
-  top: -30px;
-  padding-top: 150px;
-  padding-left: 12%;
+    background-color: #FFC864;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
+    top: -30px;
+    padding-top: 150px;
+    padding-left: 12%;
 }
 
 #collage-container {
-  align-self: center;
+    align-self: center;
 }
 
 .square {
-  border-radius: 3%;
+    border-radius: 3%;
 }
 
 
 /* -------------- */
 
 #top-5-canciones {
-  background-color: #ffffff;
-  box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
-  top: -30px;
-  padding-top: 150px;
-  padding-left: 12%;
-  padding-right: 12%;
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
+    top: -30px;
+    padding-top: 150px;
+    padding-left: 12%;
+    padding-right: 12%;
 }
 
-
 .song-list {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .song-item {
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
 }
 
 .song-item img {
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  margin-right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 20px;
 }
 
 .song-info {
-  flex: 1;
+    flex: 1;
 }
 
 .play-btn {
-  background-color: #1DB954;
-  color: #FFFFFF;
-  padding: 5px 10px;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
+    background-color: #1DB954;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
 }
 
 .play-btn:hover {
-  background-color: #1ED760;
+    background-color: #1ED760;
+}
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+#top-5-canciones {
+    background-color: #FFC864;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0 0 15px rgba(90, 90, 90, 0.5);
+    top: -60px;
+    padding-top: 150px;
+    padding-left: 12%;
+}
+.hide {
+    display: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.graph-button1 {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    /* Text color */
+    
+    border: none;
+    width: 190px;
+    height: 70px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 21px;
+    /* Smaller font size */
+    
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    /* Rounded corners */
+    
+    transition-duration: 0.4s;
+    /* Transition effect duration */
+    
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.graph-button2 {
+    background-color: rgb(58, 58, 58);
+    color: rgb(255, 255, 255);
+    /* Text color */
+    
+    border: none;
+    width: 190px;
+    height: 70px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 21px;
+    /* Smaller font size */
+    
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    /* Rounded corners */
+    
+    transition-duration: 0.4s;
+    /* Transition effect duration */
+    
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.graph-button1:hover {
+    background-color: white;
+    color: #57ad55;
+    border: 2px solid #57c82a;
+    /* Border on hover */
+}
+.graph-button2:hover {
+    background-color: white;
+    color: #ff6347;
+    border: 2px solid #ff6666;
+    /* Border on hover */
+}
+.button-container {
+    display: flex;
+    justify-content: baseline;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
@@ -9,192 +9,186 @@
     <script src="./scripts/p5.sound.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="resources/icon.png">
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Spotify Rewind</title>
-    
-  </head>
-  
 
-  <body>
+</head>
+
+
+<body>
 
     <div id="nav">
-      <h3>‡SpotifyID</h3> 
+        <h3>‡SpotifyID</h3>
     </div>
 
     <section id="intro">
-      <h1 style="margin-top: 10%;">Notas del año</h1>
-      <h2 style="margin: 3%; width: 600px; align-self: center;">Explorando el historial de streaming en Spotify</h2>
+        <h1 style="margin-top: 10%;">Notas del año</h1>
+        <h2 style="margin: 3%; width: 600px; align-self: center;">Explorando el historial de streaming en Spotify</h2>
 
-      <h3 class="text" style="margin: 5%; width: 80vw; align-self: center;">
-        ¡Bienvenidos a mi recuento musical del año! En esta página, compartiremos los momentos más destacados, 
-        cambios y descubrimientos de mi historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical 
-        y explorar los ritmos que me acompañaron a lo largo de este año. La información presentada aquí se basa en los
-        datos obtenidos de la API de Spotify y de la cuenta de Spotify de Juan. 
-      </h3>
-      <div style="height: 15vh;"></div>
+        <h3 class="text" style="margin: 5%; width: 80vw; align-self:flex-start;">
+            ¡Bienvenidos a mi recuento musical del año! En esta página, compartiremos los momentos más destacados, cambios y descubrimientos de mi historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical y explorar los ritmos que me acompañaron
+            a lo largo de este año. La información presentada aquí se basa en los datos obtenidos de la API de Spotify y de la cuenta de Spotify de Juan.
+        </h3>
+        <div style="height: 15vh;"></div>
     </section>
 
     <section id="tiempo-escuchado">
-      <h2 class="title">Tiempo escuchado</h2>
-      <h3 style="margin-top: 1%; width: 60vw;">Comenzando con una sorpresa reveladora, 
-        el tiempo escuchado en Spotify durante este año fue de [insertar número de horas].
-        Esto es equivalente a [insertar número de días] días de música.
-        Sin embargo, varía mucho de un mes a otro, como se muestra en la gráfica a continuación.
-      </h3>
-      <h3 style="font-weight: bold;">Minutos de streaming por mes</h3>
-      <div id="msPlayed" style="margin-top: 3%; margin-bottom: 15%;"></div>
+        <h2 class="title">Tiempo escuchado</h2>
+        <h3 style="margin-top: 1%; width: 60vw;">
+            Spotify genera un flujo constante de interacciones musicales gracias a sus millones de usuarios activos diarios. En este contexto, exploraremos cómo estos minutos de música suman, creando un panorama musical extenso y diverso que se extiende a lo largo
+            de meses y años.
+        </h3>
+        <div class="button-container">
+            <button class="graph-button1" onclick="toggleGraphAndText('resources/timeStreamMonth.csv', 'graph', 'Juan', )">Juan</button>
+            <button class="graph-button2" onclick="toggleGraphAndText('resources/timeStreamMonthL.csv', 'graph', 'Dolores')">Dolores</button>
+        </div>
+        <h3 id="streamingText" style="font-weight: bold; display: none;">Minutos de streaming por mes</h3>
+        <h3 id="dynamicText" style="margin-top: 1%; width: 60vw;"></h3>
+        <div id="graph"></div>
     </section>
 
-
     <section id="historias-destacadas">
-      <h2 class="title">Historias destacadas</h2>
-      <h3 style="margin-top: 1%; width: 60vw;">
-        El año musical no se trata solo de estadísticas, sino también de historias.
-        Las canciones que escuchamos repetidas muchas veces pueden revelar algo sobre
-        el momento que vivimos. Aquí hay algunas de las historias destacadas de este año.
-      </h3>
+        <h2 class="title">Historias destacadas</h2>
+        <h3 style="margin-top: 1%; width: 60vw;">
+            El año musical no se trata solo de estadísticas, sino también de historias. Las canciones que escuchamos repetidas muchas veces pueden revelar algo sobre el momento que vivimos. Aquí hay algunas de las historias destacadas de este año.
+        </h3>
 
-      <div class="carousel-container">
-        <div class="carousel">
-          <div class="carousel-item">
-            <h2>Stranger Things</h2>
-            <h3>El artista del soundtrack de la serie fue el más escuchado en agosto, semanas después de que se estrenó la cuarta temporada.</h3>
-            <h3 style="font-weight: bold; margin-top: 5%;">Artistas mas escuchados de agosto</h3>
-            <div id="plot1"></div>
-          </div>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <h2>Stranger Things</h2>
+                    <h3>El artista del soundtrack de la serie fue el más escuchado en agosto, semanas después de que se estrenó la cuarta temporada.</h3>
+                    <h3 style="font-weight: bold; margin-top: 5%;">Artistas mas escuchados de agosto</h3>
+                    <div id="plot1"></div>
+                </div>
 
-          <div class="carousel-item">
-            <h2>Dua Lipa en Argentina</h2>
-            <h3>El mes que Dua Lipa estuvo en Argentina tuvo su mayor número de reproducciones</h3>
-            <h3 style="font-weight: bold; margin-top: 5%;">Reproducciones de Dua Lipa en 2022</h3>
-            <div id="plot2"></div>
-          </div>
-          <div class="carousel-item">
-            <h2>El récord de Coldplay</h2>
-            <h3>El mes que Coldplay estuvo en Argentina tuvo su mayor número de reproducciones</h3>
-            <h3 style="font-weight: bold; margin-top: 5%;">Reproducciones de Coldplay en 2022</h3>
-            <div id="plot3"></div>
-          </div>
-          <div class="carousel-item">
-            <h2>¡Campeones del mundo!</h2>
-            <h3>La semana después del 18 de diciembre, las canciones eran un [porciento] mas enérgicas que el promedio</h3>
-            <h3 style="font-weight: bold; margin-top: 5%;">Promedio energía semana del 19 de diciembre</h3>
-            <div id="plot4"></div>
-          </div>
+                <div class="carousel-item">
+                    <h2>Dua Lipa en Argentina</h2>
+                    <h3>El mes que Dua Lipa estuvo en Argentina tuvo su mayor número de reproducciones</h3>
+                    <h3 style="font-weight: bold; margin-top: 5%;">Reproducciones de Dua Lipa en 2022</h3>
+                    <div id="plot2"></div>
+                </div>
+                <div class="carousel-item">
+                    <h2>El récord de Coldplay</h2>
+                    <h3>El mes que Coldplay estuvo en Argentina tuvo su mayor número de reproducciones</h3>
+                    <h3 style="font-weight: bold; margin-top: 5%;">Reproducciones de Coldplay en 2022</h3>
+                    <div id="plot3"></div>
+                </div>
+                <div class="carousel-item">
+                    <h2>¡Campeones del mundo!</h2>
+                    <h3>La semana después del 18 de diciembre, las canciones eran un [porciento] mas enérgicas que el promedio</h3>
+                    <h3 style="font-weight: bold; margin-top: 5%;">Promedio energía semana del 19 de diciembre</h3>
+                    <div id="plot4"></div>
+                </div>
 
+            </div>
         </div>
-      </div>
-      
+
     </section>
 
     <section id="cambio-popularidad">
-      <h2 class="title">De mainstream a alternativo</h2>
-      <h3 style="margin-top: 1%; width: 60vw;">
-        Uno de los aspectos más interesantes de mi viaje musical este año fue el cambio 
-        gradual de escuchar música mainstream a explorar géneros alternativos. 
-        A medida que me adentré en nuevas propuestas musicales, descubrí artistas 
-        emergentes y sonidos frescos que me cautivaron. Te invito a que te sumerjas 
-        conmigo en esta travesía musical y descubras los motivos detrás de este cambio.
-      </h3>
-      <div id="circle-viz">
-        <div>
-          <h3 id="description" style="overflow-wrap: normal;"></h3>
-          <div>
-            <img src="resources/legend.png" alt="Leyenda no pudo cargar" style="height: 30vh;margin-top: 20%">
-          </div>
+        <h2 class="title">De mainstream a alternativo</h2>
+        <h3 style="margin-top: 1%; width: 60vw;">
+            Uno de los aspectos más interesantes de mi viaje musical este año fue el cambio gradual de escuchar música mainstream a explorar géneros alternativos. A medida que me adentré en nuevas propuestas musicales, descubrí artistas emergentes y sonidos frescos
+            que me cautivaron. Te invito a que te sumerjas conmigo en esta travesía musical y descubras los motivos detrás de este cambio.
+        </h3>
+        <div id="circle-viz">
+            <div>
+                <h3 id="description" style="overflow-wrap: normal;"></h3>
+                <div>
+                    <img src="resources/legend.png" alt="Leyenda no pudo cargar" style="height: 30vh;margin-top: 20%">
+                </div>
+            </div>
         </div>
-      </div>
-      <div id="extra-space" style="height: 200vh;"></div>
+        <div id="extra-space" style="height: 200vh;"></div>
     </section>
 
     <section id="top-30-albums">
-      <h2 class="title">Top albums del año</h2>
-      <svg id="collage-container" width="750" height="750"></svg>
+        <h2 class="title">Top albums del año</h2>
+        <svg id="collage-container" width="750" height="750"></svg>
     </section>
 
     <section id="top-5-canciones">
-      <h2 class="title">Top 5 canciones</h2>
-      <div style="height: 100vh; display: flex; flex-direction: row; justify-content: space-between;">
-        <div id="song-select">
-            <div class="song-list">
-                <!-- Create a list of songs here with .song-item elements -->
-                <div class="song-item">
-                    <img src="resources/img.jpg" alt="Song Image">
-                    <div class="song-info">
-                        <h3>Song Name</h3>
-                        <p>Album</p>
+        <h2 class="title">Top 5 canciones</h2>
+        <div style="height: 100vh; display: flex; flex-direction: row; justify-content: space-between;">
+            <div id="song-select">
+                <div class="song-list">
+                    <!-- Create a list of songs here with .song-item elements -->
+                    <div class="song-item">
+                        <img src="resources/img.jpg" alt="Song Image">
+                        <div class="song-info">
+                            <h3>Song Name</h3>
+                            <p>Album</p>
+                        </div>
+                        <button class="play-btn">Play/Select</button>
                     </div>
-                    <button class="play-btn">Play/Select</button>
+                    <div class="song-item">
+                        <img src="resources/img.jpg" alt="Song Image">
+                        <div class="song-info">
+                            <h3>Song Name</h3>
+                            <p>Album</p>
+                        </div>
+                        <button class="play-btn">Play/Select</button>
+                    </div>
+                    <div class="song-item">
+                        <img src="resources/img.jpg" alt="Song Image">
+                        <div class="song-info">
+                            <h3>Song Name</h3>
+                            <p>Album</p>
+                        </div>
+                        <button class="play-btn">Play/Select</button>
+                    </div>
+                    <div class="song-item">
+                        <img src="resources/img.jpg" alt="Song Image">
+                        <div class="song-info">
+                            <h3>Song Name</h3>
+                            <p>Album</p>
+                        </div>
+                        <button class="play-btn">Play/Select</button>
+                    </div>
+                    <!-- Add more .song-item elements for each song -->
                 </div>
-                <div class="song-item">
-                  <img src="resources/img.jpg" alt="Song Image">
-                  <div class="song-info">
-                      <h3>Song Name</h3>
-                      <p>Album</p>
-                  </div>
-                  <button class="play-btn">Play/Select</button>
-              </div>
-              <div class="song-item">
-                <img src="resources/img.jpg" alt="Song Image">
-                <div class="song-info">
-                    <h3>Song Name</h3>
-                    <p>Album</p>
-                </div>
-                <button class="play-btn">Play/Select</button>
             </div>
-            <div class="song-item">
-              <img src="resources/img.jpg" alt="Song Image">
-              <div class="song-info">
-                  <h3>Song Name</h3>
-                  <p>Album</p>
-              </div>
-              <button class="play-btn">Play/Select</button>
-          </div>
-                <!-- Add more .song-item elements for each song -->
-            </div>
+            <div id="song-display"></div>
         </div>
-        <div id="song-display"></div>
-      </div>
     </section>
-  
-
-  <script>
-    window.addEventListener('scroll', function() {
-
-      var intro = document.getElementById('intro');
-      var tiempoEscuchado = document.getElementById('tiempo-escuchado');
-      var historiasDestacadas = document.getElementById('historias-destacadas');
-      var cambioPopularidad = document.getElementById('cambio-popularidad');
-      var top5Canciones = document.getElementById('top-5-canciones');
-
-      var scrolled = window.pageYOffset;
-
-      var firstTreshold = intro.clientHeight/1.5;
-      var secondTreshold = firstTreshold + tiempoEscuchado.clientHeight/1.2 - 30;
-
-      if(scrolled > firstTreshold && scrolled < secondTreshold) {
-        intro.style.top = scrolled - firstTreshold + 'px';
-      } else if (scrolled > secondTreshold) {
-        tiempoEscuchado.style.top = scrolled - secondTreshold  + 'px';
-      }
-    });
-
-  </script>
 
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
-  <script src="https://d3js.org/d3.v6.min.js"></script>
-  
-  <script src="scripts/circle_viz.js"></script>
-  <script src="scripts/live_viz.js"></script>
-  <script src="scripts/tiempoStreaming.js"></script>
-  <script src="scripts/carrousel.js"></script>
-  <script src="scripts/historias.js"></script>
-  <script src="scripts/albums.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
 
-  
+            var intro = document.getElementById('intro');
+            var tiempoEscuchado = document.getElementById('tiempo-escuchado');
+            var historiasDestacadas = document.getElementById('historias-destacadas');
+            var cambioPopularidad = document.getElementById('cambio-popularidad');
+            var top5Canciones = document.getElementById('top-5-canciones');
+
+            var scrolled = window.pageYOffset;
+
+            var firstTreshold = intro.clientHeight / 1.5;
+            var secondTreshold = firstTreshold + tiempoEscuchado.clientHeight / 1.2 - 30;
+
+            if (scrolled > firstTreshold && scrolled < secondTreshold) {
+                intro.style.top = scrolled - firstTreshold + 'px';
+            } else if (scrolled > secondTreshold) {
+                tiempoEscuchado.style.top = scrolled - secondTreshold + 'px';
+            }
+        });
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <script src="scripts/circle_viz.js"></script>
+    <script src="scripts/live_viz.js"></script>
+    <script src="scripts/tiempoStreaming.js"></script>
+    <script src="scripts/carrousel.js"></script>
+    <script src="scripts/historias.js"></script>
+    <script src="scripts/albums.js"></script>
+
 </body>
 
 </html>
