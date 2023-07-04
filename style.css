@@ -229,13 +229,11 @@ section {
 
 .play-btn:hover {
     background-color: #1ED760;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-display: flex;
-justify-content: center;
-align-items: center;
-
-}
 #top-5-canciones {
     background-color: #FFC864;
     border-top-left-radius: 30px;
@@ -245,16 +243,17 @@ align-items: center;
     padding-top: 150px;
     padding-left: 12%;
 }
+
 .hide {
     display: none;
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 .graph-button1 {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     /* Text color */
-    
     border: none;
     width: 190px;
     height: 70px;
@@ -263,23 +262,20 @@ align-items: center;
     display: inline-block;
     font-size: 21px;
     /* Smaller font size */
-    
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
     /* Rounded corners */
-    
     transition-duration: 0.4s;
     /* Transition effect duration */
-    
     margin-top: 50px;
     margin-bottom: 10px;
 }
+
 .graph-button2 {
     background-color: rgb(58, 58, 58);
     color: rgb(255, 255, 255);
     /* Text color */
-    
     border: none;
     width: 190px;
     height: 70px;
@@ -288,30 +284,30 @@ align-items: center;
     display: inline-block;
     font-size: 21px;
     /* Smaller font size */
-    
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
     /* Rounded corners */
-    
     transition-duration: 0.4s;
     /* Transition effect duration */
-    
     margin-top: 50px;
     margin-bottom: 10px;
 }
+
 .graph-button1:hover {
     background-color: white;
     color: #57ad55;
     border: 2px solid #57c82a;
     /* Border on hover */
 }
+
 .graph-button2:hover {
     background-color: white;
     color: #ff6347;
     border: 2px solid #ff6666;
     /* Border on hover */
 }
+
 .button-container {
     display: flex;
     justify-content: baseline;
