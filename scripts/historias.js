@@ -114,3 +114,43 @@ d3.json("resources/top_artists_month.json").then (data =>{
     d3.select('#plot2').append(() => plot2)
     d3.select('#plot3').append(() => plot3)
 });
+
+
+d3.json("resources/diciembreData.json").then (data =>{
+
+    console.log(data);
+
+    let energy_dec = [];
+    for (var day in data){
+        energy_dec.push({day: +day, energy: +data[day]['energy']});
+    }
+
+
+    const plot4 = Plot.plot({
+        marks: [
+            Plot.line(energy_dec.slice(16, 27), {x: 'day', y: "energy", curve: 'natural'}),
+        ],
+        x: {
+            axis: "bottom",
+            label: "Dia",
+            ticks: 27-16,
+            labelOffset: 50,
+        },
+        y: {
+            axis: "left",
+            label: "Num. de canciones con energia alta",
+            ticks: 5
+        },
+        style: {
+            fontFamily: "Circular, sans-serif",
+            fontSize: "15px",
+        },
+
+        width: 500,
+        height: 300,
+        inset: 20
+    });
+
+
+    d3.select('#plot4').append(() => plot4)
+})
