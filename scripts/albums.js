@@ -34,11 +34,11 @@
 //       .attr("y", d => d.y - d.size / 2);
 //   });
 
-var carousel = document.querySelector('.carousel2');
+var carousel2 = document.querySelector('.carousel2');
 var leftArrow = document.querySelector('.carousel2-arrow-left');
 var rightArrow = document.querySelector('.carousel2-arrow-right');
 
-carousel.addEventListener('keydown', function(e) {
+carousel2.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight') {
         carousel2.scrollLeft += 200;
     } else if (e.key === 'ArrowLeft') {

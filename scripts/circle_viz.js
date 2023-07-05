@@ -194,10 +194,8 @@ function rotateText(x, y, radius, txt, sketch) {
 
 // new p5(circleSongs);
 var p5sk;
-var p5sk2;
 window.onload = () => {
   p5sk = new p5(circleSongs);
-  p5sk2 = new p5(songPlaying);
 };
 
 function initData(sketch) {

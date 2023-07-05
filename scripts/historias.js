@@ -118,7 +118,6 @@ d3.json("resources/top_artists_month.json").then (data =>{
 
 d3.json("resources/diciembreData.json").then (data =>{
 
-    console.log(data);
 
     let energy_dec = [];
     for (var day in data){
