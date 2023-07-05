@@ -782,6 +782,7 @@ window.addEventListener('load', () => {
 function selectSong(id) {
   // Stop any sound-related components
   vizLive.noCanvas();
+  vizLive.song.stop();
   // vizLive.soundOut.stopAll();
   vizLive.soundLoop && vizLive.soundLoop.dispose();
   vizLive.soundRecorder && vizLive.soundRecorder.dispose();

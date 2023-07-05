@@ -1,4 +1,4 @@
-const carousel = document.querySelector('.carousel');
+const carouselHistorias = document.querySelector('.carousel');
 const carouselItems = document.querySelectorAll('.carousel-item');
 const carouselContainer = document.querySelector('.carousel-container');
 
@@ -7,8 +7,8 @@ let startPosition = 0;
 let currentTranslate = 0;
 let prevTranslate = 0;
 
-carousel.addEventListener('mousedown', dragStart);
-carousel.addEventListener('touchstart', dragStart);
+carouselHistorias.addEventListener('mousedown', dragStart);
+carouselHistorias.addEventListener('touchstart', dragStart);
 carouselContainer.addEventListener('mouseleave', dragEnd);
 carouselContainer.addEventListener('mouseup', dragEnd);
 carouselContainer.addEventListener('touchend', dragEnd);
@@ -21,7 +21,7 @@ function dragStart(e) {
     startPosition = e.touches[0].clientX;
   } else {
     startPosition = e.clientX;
-    carousel.style.cursor = 'grabbing';
+    carouselHistorias.style.cursor = 'grabbing';
   }
   isDragging = true;
 }
@@ -36,15 +36,15 @@ function drag(e) {
     }
     const diff = currentPosition - startPosition;
     currentTranslate = prevTranslate + diff;
-    carousel.style.transform = `translateX(${currentTranslate}px)`;
+    carouselHistorias.style.transform = `translateX(${currentTranslate}px)`;
   }
 }
 
 function dragEnd() {
   prevTranslate = currentTranslate;
   isDragging = false;
-  carousel.style.cursor = 'grab';
+  carouselHistorias.style.cursor = 'grab';
 }
 
 // Evitar selección de texto durante el arrastre
-carousel.addEventListener('dragstart', (e) => e.preventDefault());
+carouselHistorias.addEventListener('dragstart', (e) => e.preventDefault());
