@@ -106,7 +106,7 @@
     <section id="top-30-albums">
         <h2 class="title">Top albums del año</h2>
         <div class="carousel-wrapper">
-            <button class="carousel2-arrow carousel2-arrow-left">&lt;</button>
+            <!-- <button class="carousel2-arrow carousel2-arrow-left">&lt;</button>
             <div class="carousel2-container">
                 <div class="carousel2" tabindex="0">
                     <div class="carousel2-item">
@@ -132,11 +132,43 @@
                     <div class="carousel2-item">
                         <h2>Album 6</h2>
                         <img class="carousel2-image" src="resources/albums_dataviz/thk.png">
+                    </div> 
+                </div>
+            </div>
+            <button class="carousel2-arrow carousel2-arrow-right">&gt;</button>-->
+            <div class="carousel2">
+                <div class="carousel2-container">
+                    <div class="carousel2-item">
+                        <h2>Beerbongs </h2>
+                        <img src="resources/albums_dataviz/beerbongs.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Bloom</h2>
+                        <img src="resources/albums_dataviz/bloom.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>So far so good</h2>
+                        <img src="resources/albums_dataviz/chainskm.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Ghost Stories</h2>
+                        <img src="resources/albums_dataviz/coldplay.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Give or Take</h2>
+                        <img src="resources/albums_dataviz/gort.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>thank u next</h2>
+                        <img src="resources/albums_dataviz/thk.png">
                     </div>
                 </div>
             </div>
-            <button class="carousel2-arrow carousel2-arrow-right">&gt;</button>
+            <div class="carousel2-button left" onclick="moveCarousel('left')">&#8249;</div>
+            <div class="carousel2-button right" onclick="moveCarousel('right')">&#8250;</div>
         </div>
+
+
     </section>
 
     <section id="top-5-canciones">
@@ -145,10 +177,10 @@
             <div id="song-select">
                 <div class="song-list">
                     <div class="song-item">
-                        <img src="resources/img.jpg" alt="Song Image">
+                        <img src="resources/fotos_songs/always_in_my_head.jpeg" alt="Song Image">
                         <div class="song-info">
-                            <h3>Song Name</h3>
-                            <p>Album</p>
+                            <h3>Always in my head</h3>
+                            <p>Album: Ghost Stories</p>
                         </div>
                         <button class="play-btn">Play/Select</button>
                     </div>
@@ -204,6 +236,43 @@
                 tiempoEscuchado.style.top = scrolled - secondTreshold + 'px';
             }
         });
+    </script>
+
+    <script>
+        // Variables globales
+        var carousel = document.querySelector('.carousel2');
+        var container = carousel.querySelector('.carousel2-container');
+        var items = carousel.querySelectorAll('.carousel2-item');
+        var currentItem = 0;
+        var totalItems = items.length;
+        var slideWidth = items[0].clientWidth;
+        var isAnimating = false;
+
+        // Función para mover el carousel
+        function moveCarousel(direction) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            if (direction === 'left') {
+                currentItem--;
+                if (currentItem < 0) {
+                    currentItem = totalItems - 1;
+                    container.style.transform = `translateX(-${slideWidth * (totalItems - 1)}px)`;
+                }
+            } else if (direction === 'right') {
+                currentItem++;
+                if (currentItem >= totalItems) {
+                    currentItem = 0;
+                    container.style.transform = 'translateX(0)';
+                }
+            }
+
+            container.style.transform = `translateX(-${slideWidth * currentItem}px)`;
+
+            setTimeout(function() {
+                isAnimating = false;
+            }, 500);
+        }
     </script>
 
 
