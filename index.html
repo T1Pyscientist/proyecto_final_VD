@@ -26,8 +26,8 @@
         <h2 style="margin: 3%; width: 600px; align-self: center;">Explorando el historial de streaming en Spotify</h2>
 
         <h3 class="text" style="margin: 5%; width: 80vw; align-self:center;">
-            ¡Bienvenidos a nuestro recuento musical del año! En esta página, compartiremos los momentos más destacados, cambios y descubrimientos de nuestro historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical y explorar los ritmos que me acompañaron
-            a lo largo de este año. La información presentada aquí se basa en los datos obtenidos de la API de Spotify y las cuenta de Spotify de Juan y Dolores.
+            ¡Bienvenidos a nuestro recuento musical del año! En esta página, compartiremos los momentos más destacados, cambios y descubrimientos de nuestro historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical y explorar los ritmos que
+            me acompañaron a lo largo de este año. La información presentada aquí se basa en los datos obtenidos de la API de Spotify y las cuenta de Spotify de Juan y Dolores.
         </h3>
         <div style="height: 15vh;"></div>
     </section>
@@ -37,12 +37,12 @@
         <h3 style="margin-top: 1%; width: 60vw;">
             Spotify genera un flujo constante de interacciones musicales gracias a sus millones de usuarios activos diarios. En este contexto, exploraremos cómo estos minutos de música suman, creando un panorama musical extenso y diverso que se extiende a lo largo
             de meses y años.
-          </h3>
-          <h3 id="dynamicText" style="margin-top: 1%; width: 60vw;"></h3>
-          <div class="button-container">
-              <button class="graph-button1" onclick="toggleGraphAndText('resources/timeStreamMonth.csv', 'graph', 'Juan')">Juan</button>
-              <button class="graph-button2" onclick="toggleGraphAndText('resources/timeStreamMonthL.csv', 'graph', 'Dolores')">Dolores</button>
-          </div>
+        </h3>
+        <h3 id="dynamicText" style="margin-top: 1%; width: 60vw;"></h3>
+        <div class="button-container">
+            <button class="graph-button1" onclick="toggleGraphAndText('resources/timeStreamMonth.csv', 'graph', 'Juan')">Juan</button>
+            <button class="graph-button2" onclick="toggleGraphAndText('resources/timeStreamMonthL.csv', 'graph', 'Dolores')">Dolores</button>
+        </div>
         <h3 id="streamingText" style="font-weight: bold; display: none;">Minutos de streaming por mes</h3>
         <div id="graph"></div>
     </section>
@@ -105,7 +105,38 @@
 
     <section id="top-30-albums">
         <h2 class="title">Top albums del año</h2>
-        <svg id="collage-container" width="750" height="750"></svg>
+        <div class="carousel-wrapper">
+            <button class="carousel2-arrow carousel2-arrow-left">&lt;</button>
+            <div class="carousel2-container">
+                <div class="carousel2" tabindex="0">
+                    <div class="carousel2-item">
+                        <h2>Album 1</h2>
+                        <img class="carousel2-image" src="resources/albums_dataviz/beerbongs.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Album 2</h2>
+                        <img class="carousel2-image" src="resources/albums_dataviz/bloom.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Album 3</h2>
+                        <img class="carousel2-image" src="resources/albums_dataviz/chainskm.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Album 4</h2>
+                        <img class="carousel2-image" src="resources/albums_dataviz/coldplay.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Album 5</h2>
+                        <img class="carousel2-image" src="resources/albums_dataviz/gort.png">
+                    </div>
+                    <div class="carousel2-item">
+                        <h2>Album 6</h2>
+                        <img class="carousel2-image" src="resources/albums_dataviz/thk.png">
+                    </div>
+                </div>
+            </div>
+            <button class="carousel2-arrow carousel2-arrow-right">&gt;</button>
+        </div>
     </section>
 
     <section id="top-5-canciones">
