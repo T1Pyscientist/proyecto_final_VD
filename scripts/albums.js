@@ -46,10 +46,10 @@ carousel2.addEventListener('keydown', function(e) {
     }
 });
 
-leftArrow.addEventListener('click', function() {
-    carousel2.scrollLeft -= 200;
-});
+// leftArrow.addEventListener('click', function() {
+//     carousel2.scrollLeft -= 200;
+// });
 
-rightArrow.addEventListener('click', function() {
-    carousel2.scrollLeft += 200;
-});
+// rightArrow.addEventListener('click', function() {
+//     carousel2.scrollLeft += 200;
+// });
