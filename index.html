@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="resources/icon.png">
     <meta charset="utf-8" />
-    <title>Spotify Rewind</title>
+    <title>Spotify Wrapped</title>
 
 </head>
 
@@ -22,18 +22,18 @@
     </div>
 
     <section id="intro">
-        <h1 style="margin-top: 10%;">Notas del año</h1>
-        <h2 style="margin: 3%; width: 600px; align-self: center;">Explorando el historial de streaming en Spotify</h2>
+        <h1 style="margin-top: 10%">Spotify Wrapped</h1>
+        <h2 style="margin: 1%; width: 900px; align-self: center; font-size: 30px;">Explorando el historial de streaming en Spotify</h2>
 
-        <h3 class="text" style="margin: 5%; width: 80vw; align-self:center;">
+        <h3 class="text" style="margin: 6%; width: 80vw; align-self:center;">
             ¡Bienvenidos a nuestro recuento musical del año! En esta página, compartiremos los momentos más destacados, cambios y descubrimientos de nuestro historial de streaming en Spotify. Prepárate para sumergirte en el mundo musical y explorar los ritmos que
-            me acompañaron a lo largo de este año. La información presentada aquí se basa en los datos obtenidos de la API de Spotify y las cuenta de Spotify de Juan y Dolores.
+            nos acompañaron a lo largo de este año. La información presentada aquí se basa en los datos obtenidos de la API de Spotify y las cuentas de Spotify de Juan y Dolores.
         </h3>
         <div style="height: 15vh;"></div>
     </section>
 
     <section id="tiempo-escuchado">
-        <h2 class="title">Tiempo de streaming</h2>
+        <h2 class="title" style="color: #116b31;">Tiempo de streaming</h2>
         <h3 style="margin-top: 1%; width: 60vw;">
             Spotify genera un flujo constante de interacciones musicales gracias a sus millones de usuarios activos diarios. En este contexto, exploraremos cómo estos minutos de música suman, creando un panorama musical extenso y diverso que se extiende a lo largo
             de meses y años.
@@ -50,7 +50,8 @@
     <section id="historias-destacadas">
         <h2 class="title">Historias destacadas</h2>
         <h3 style="margin-top: 1%; width: 60vw;">
-            El año musical no se trata solo de estadísticas, sino también de historias. Las canciones que escuchamos repetidas muchas veces pueden revelar algo sobre el momento que vivimos. Aquí hay algunas de las historias destacadas de este año.
+            La música de cada año no es sólo una cuestión de números, también está llena de historias increíbles. Las canciones que escuchamos una y otra vez nos pueden contar mucho sobre lo que estamos viviendo. Aquí te dejamos con algunas de las historias más interesantes
+            del año.
         </h3>
 
         <div class="carousel-container">
@@ -87,10 +88,10 @@
     </section>
 
     <section id="cambio-popularidad">
-        <h2 class="title">De mainstream a alternativo</h2>
+        <h2 class="title" style="color: #116b31;">De mainstream a alternativo</h2>
         <h3 style="margin-top: 1%; width: 60vw;">
-            Uno de los aspectos más interesantes de mi viaje musical este año fue el cambio gradual de escuchar música mainstream a explorar géneros alternativos. A medida que me adentré en nuevas propuestas musicales, descubrí artistas emergentes y sonidos frescos
-            que me cautivaron. Te invito a que te sumerjas conmigo en esta travesía musical y descubras los motivos detrás de este cambio.
+            A lo largo de este año, nuestro viaje musical se ha caracterizado por transitar desde la música mainstream hacia géneros alternativos, descubriendo artistas emergentes y sonidos nuevos. Te invito a unirte a esta exploración musical y entender las razones
+            de este cambio.
         </h3>
         <div id="circle-viz">
             <div>
@@ -104,62 +105,42 @@
     </section>
 
     <section id="top-30-albums">
-        <h2 class="title">Top albums del año</h2>
+        <h2 class="title">Top albums</h2>
+        <h3 style="margin-top: 1%; width: 80vw;"> Desde latidos hipnóticos hasta melodías suaves, estos son los álbumes que resonaron con nosotros y con millones de oyentes en todo el mundo. ¡Explora, disfruta y redescubre la música que definió nuestro año!
+        </h3>
+        <h3 style="margin-top: 1%; width: 60vw; font-size: 15px;"> Referencias </h3>
+        <h3 style=" margin-top: -1%; width:60vw; font-size: 15px;"> Genero musical: color - Frecuencia: cantidad de rayas en disco - Preferencia: cantidad de reflejos en disco - Danzabilidad: transparencia de reflejos en disco - Contenido explicito: punto centrar on/off </h3>
         <div class="carousel-wrapper">
-            <!-- <button class="carousel2-arrow carousel2-arrow-left">&lt;</button>
-            <div class="carousel2-container">
-                <div class="carousel2" tabindex="0">
-                    <div class="carousel2-item">
-                        <h2>Album 1</h2>
-                        <img class="carousel2-image" src="resources/albums_dataviz/beerbongs.png">
-                    </div>
-                    <div class="carousel2-item">
-                        <h2>Album 2</h2>
-                        <img class="carousel2-image" src="resources/albums_dataviz/bloom.png">
-                    </div>
-                    <div class="carousel2-item">
-                        <h2>Album 3</h2>
-                        <img class="carousel2-image" src="resources/albums_dataviz/chainskm.png">
-                    </div>
-                    <div class="carousel2-item">
-                        <h2>Album 4</h2>
-                        <img class="carousel2-image" src="resources/albums_dataviz/coldplay.png">
-                    </div>
-                    <div class="carousel2-item">
-                        <h2>Album 5</h2>
-                        <img class="carousel2-image" src="resources/albums_dataviz/gort.png">
-                    </div>
-                    <div class="carousel2-item">
-                        <h2>Album 6</h2>
-                        <img class="carousel2-image" src="resources/albums_dataviz/thk.png">
-                    </div> 
-                </div>
-            </div>
-            <button class="carousel2-arrow carousel2-arrow-right">&gt;</button>-->
             <div class="carousel2">
                 <div class="carousel2-container">
                     <div class="carousel2-item">
-                        <h2>Beerbongs </h2>
+                        <h2>Beerbongs & B.</h2>
+                        <h3 style="font-size: 14; text-align: center; margin-top: -9%; padding-bottom: 15%;"> Post Malone</h3>
                         <img src="resources/albums_dataviz/beerbongs.png">
                     </div>
                     <div class="carousel2-item">
                         <h2>Bloom</h2>
+                        <h3 style="font-size: 14; text-align: center; margin-top: -9%; padding-bottom: 15%;"> Rufus du Sol</h3>
                         <img src="resources/albums_dataviz/bloom.png">
                     </div>
                     <div class="carousel2-item">
                         <h2>So far so good</h2>
+                        <h3 style="font-size: 14; text-align: center; margin-top: -9%; padding-bottom: 15%;"> The Chainsmokers</h3>
                         <img src="resources/albums_dataviz/chainskm.png">
                     </div>
                     <div class="carousel2-item">
                         <h2>Ghost Stories</h2>
+                        <h3 style="font-size: 14; text-align: center; margin-top: -9%; padding-bottom: 15%;"> Coldplay</h3>
                         <img src="resources/albums_dataviz/coldplay.png">
                     </div>
                     <div class="carousel2-item">
                         <h2>Give or Take</h2>
+                        <h3 style="font-size: 14; text-align: center; margin-top: -9%; padding-bottom: 15%;"> Giveon</h3>
                         <img src="resources/albums_dataviz/gort.png">
                     </div>
                     <div class="carousel2-item">
                         <h2>thank u next</h2>
+                        <h3 style="font-size: 14; text-align: center; margin-top: -9%; padding-bottom: 15%;"> Ariana Grande</h3>
                         <img src="resources/albums_dataviz/thk.png">
                     </div>
                 </div>
@@ -172,11 +153,9 @@
     </section>
 
     <section id="top-5-canciones">
-        <h2 class="title">Top 5 canciones</h2>
+        <h2 class="title" style="color: #116b31;">Top canciones</h2>
         <h3 style="margin-top: 1%; width: 60vw;">
-            Es hora de sumergirnos en el análisis de mis cinco canciones más reproducidas durante el año. 
-            Exploraremos las características detrás de cada una, extraídas del analisis de Spotify. 
-            Podés reproducirlas y visualizar los datos en tiempo real.
+            Es hora de sumergirnos en el análisis de las cinco canciones más reproducidas durante el año. Exploraremos las características detrás de cada una, extraídas del analisis de Spotify. Podés reproducirlas y visualizar los datos en tiempo real.
         </h3>
         <div style="height: 80vh; display: flex; flex-direction: row; justify-content: space-between;">
             <div id="song-select">
@@ -200,21 +179,21 @@
                         <div class="song-info">
                             <h3>I guess I just feel like</h3>
                         </div>
-                        <button class="play-btn"onclick="selectSong(3)">Play</button>
+                        <button class="play-btn" onclick="selectSong(3)">Play</button>
                     </div>
                     <div class="song-item">
                         <img src="resources/fotos_songs/betheone.jpg" alt="Song Image">
                         <div class="song-info">
                             <h3>Be the one</h3>
                         </div>
-                        <button class="play-btn"onclick="selectSong(4)">Play</button>
+                        <button class="play-btn" onclick="selectSong(4)">Play</button>
                     </div>
                     <div class="song-item">
                         <img src="resources/fotos_songs/badbunny.jpg" alt="Song Image">
                         <div class="song-info">
                             <h3>Yo no soy celoso</h3>
                         </div>
-                        <button class="play-btn"onclick="selectSong(5)">Play</button>
+                        <button class="play-btn" onclick="selectSong(5)">Play</button>
                     </div>
                 </div>
             </div>
@@ -222,11 +201,8 @@
         </div>
 
         <h3 style="margin-bottom: 15%;">
-            Mi recuento musical del año ha sido una oportunidad para reflexionar sobre mi viaje
-             a través de la música. Desde las estadísticas hasta las historias, los cambios y 
-             los descubrimientos, cada elemento ha contribuido a enriquecer mi conexión con la música 
-             y ha dejado una marca en mi vida. Espero que disfrutes navegando a través de mi narrativa 
-             musical y que te inspire a explorar y disfrutar de tus propias aventuras sonoras.
+            El recuento musical del año ha sido una oportunidad para reflexionar sobre los viajes a través de la música. Desde las estadísticas hasta las historias, los cambios y los descubrimientos, cada elemento ha contribuido a enriquecer nuestras conexiones con
+            la música y ha dejado una marca en nuestras vidas. Espero que disfrutes navegando a través de las narrativas musicales y que te inspire a explorar y disfrutar de tus propias aventuras sonoras.
         </h3>
 
     </section>

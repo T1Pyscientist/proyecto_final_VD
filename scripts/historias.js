@@ -1,17 +1,17 @@
-d3.json("resources/top_artists_month.json").then (data =>{
+d3.json("resources/top_artists_month.json").then(data => {
 
     const agosto = data['8/2022'];
     let artistas_agosto = [];
 
-    for(var artista in agosto){
-        artistas_agosto.push({artista: artista, streams: agosto[artista]});
+    for (var artista in agosto) {
+        artistas_agosto.push({ artista: artista, streams: agosto[artista] });
     }
 
     artistas_agosto = artistas_agosto.sort((a, b) => b.streams - a.streams).slice(0, 5);
-    
+
     const plot1 = Plot.plot({
         marks: [
-            Plot.barY(artistas_agosto, {x: "artista", y: "streams", sort: { x: 'y', reverse: true }, fill: '#e52a29'}),
+            Plot.barY(artistas_agosto, { x: "artista", y: "streams", sort: { x: 'y', reverse: true }, fill: "#348ac4" }),
             Plot.axisX({ label: null, lineWidth: 7 }),
         ],
         y: {
@@ -32,20 +32,20 @@ d3.json("resources/top_artists_month.json").then (data =>{
 
     let dua_months = [];
 
-    for (var month in data){
+    for (var month in data) {
 
-        if(month.slice(2) != '2023') {
+        if (month.slice(2) != '2023') {
             let streams = +data[month]['Dua Lipa'];
-            if (!streams){
+            if (!streams) {
                 streams = 0;
             }
-            dua_months.push({month: +month.split("/")[0]-1, streams: streams});
+            dua_months.push({ month: +month.split("/")[0] - 1, streams: streams });
         }
     }
 
     const plot2 = Plot.plot({
         marks: [
-            Plot.line(dua_months, {x: "month", y: "streams", curve: 'natural'}),
+            Plot.line(dua_months, { x: "month", y: "streams", curve: 'natural' }),
         ],
         x: {
             axis: "bottom",
@@ -72,20 +72,20 @@ d3.json("resources/top_artists_month.json").then (data =>{
 
     let coldplay_months = [];
 
-    for (var month in data){
+    for (var month in data) {
 
-        if(month.slice(2) != '2023') {
+        if (month.slice(2) != '2023') {
             let streams = +data[month]['Coldplay'];
-            if (!streams){
+            if (!streams) {
                 streams = 0;
             }
-            coldplay_months.push({month: +month.split("/")[0]-1, streams: streams});
+            coldplay_months.push({ month: +month.split("/")[0] - 1, streams: streams });
         }
     }
 
     const plot3 = Plot.plot({
         marks: [
-            Plot.line(coldplay_months, {x: "month", y: "streams", curve: 'natural'}),
+            Plot.line(coldplay_months, { x: "month", y: "streams", curve: 'natural' }),
         ],
         x: {
             axis: "bottom",
@@ -116,23 +116,23 @@ d3.json("resources/top_artists_month.json").then (data =>{
 });
 
 
-d3.json("resources/diciembreData.json").then (data =>{
+d3.json("resources/diciembreData.json").then(data => {
 
 
     let energy_dec = [];
-    for (var day in data){
-        energy_dec.push({day: +day, energy: +data[day]['energy']});
+    for (var day in data) {
+        energy_dec.push({ day: +day, energy: +data[day]['energy'] });
     }
 
 
     const plot4 = Plot.plot({
         marks: [
-            Plot.line(energy_dec.slice(16, 27), {x: 'day', y: "energy", curve: 'natural'}),
+            Plot.line(energy_dec.slice(16, 27), { x: 'day', y: "energy", curve: 'natural' }),
         ],
         x: {
             axis: "bottom",
             label: "Dia",
-            ticks: 27-16,
+            ticks: 27 - 16,
             labelOffset: 50,
         },
         y: {

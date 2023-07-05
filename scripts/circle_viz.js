@@ -19,18 +19,18 @@ class Song {
         this.x = 0;
         this.y = 0;
         this.i = i;
-        this.popularity=0;
+        this.popularity = 0;
     }
 
     update(sketch) {
         if (t < 0.5) {
-            this.x = sketch.lerp(final_positions[this.i][0].x, final_positions[this.i][1].x, t*2);
-            this.y = sketch.lerp(final_positions[this.i][0].y, final_positions[this.i][1].y, t*2);
-            this.popularity=sketch.lerp(top50_long.items[this.i].popularity,top50_medium.items[this.i].popularity,t*2);
+            this.x = sketch.lerp(final_positions[this.i][0].x, final_positions[this.i][1].x, t * 2);
+            this.y = sketch.lerp(final_positions[this.i][0].y, final_positions[this.i][1].y, t * 2);
+            this.popularity = sketch.lerp(top50_long.items[this.i].popularity, top50_medium.items[this.i].popularity, t * 2);
         } else if (t >= 0.5) {
-            this.x = sketch.lerp(final_positions[this.i][1].x, final_positions[this.i][2].x, (t-0.5)*2);
-            this.y = sketch.lerp(final_positions[this.i][1].y, final_positions[this.i][2].y, (t-0.5)*2);
-            this.popularity=sketch.lerp(top50_medium.items[this.i].popularity,top50_short.items[this.i].popularity,(t-0.5)*2);
+            this.x = sketch.lerp(final_positions[this.i][1].x, final_positions[this.i][2].x, (t - 0.5) * 2);
+            this.y = sketch.lerp(final_positions[this.i][1].y, final_positions[this.i][2].y, (t - 0.5) * 2);
+            this.popularity = sketch.lerp(top50_medium.items[this.i].popularity, top50_short.items[this.i].popularity, (t - 0.5) * 2);
         }
     }
 
@@ -38,28 +38,28 @@ class Song {
         this.update(p);
         p.push();
         let colors = ['red', 'blue', 'white']
-        // Linear interpolation between colors
+            // Linear interpolation between colors
         let c = p.lerpColor(p.color(180, 155, 200, 150), p.color(134, 198, 243, 150), t);
 
         // p.noStroke();
         p.fill(c);
-        p.ellipse(this.x, this.y, Math.exp(this.popularity/20), Math.exp(this.popularity/20));
+        p.ellipse(this.x, this.y, Math.exp(this.popularity / 20), Math.exp(this.popularity / 20));
         p.pop();
     }
 }
 
 var circleSongs = function(sketch) {
-    
+
     data = [];
     final_positions = [];
 
-    features_names = ["Acousticness","Danceability","Instrumentalness", 'Energy', "Valence",'Speechiness', 'Liveness']
-    featuresSong = features_names.length-2;
+    features_names = ["Acousticness", "Danceability", "Instrumentalness", 'Energy', "Valence", 'Speechiness', 'Liveness']
+    featuresSong = features_names.length - 2;
 
     let w = 750;
     let h = 750;
 
-    sketch.preload = function () {
+    sketch.preload = function() {
         top50_short = sketch.loadJSON('./resources/top50_short.json')
         features_short = sketch.loadJSON('./resources/features_short.json')
 
@@ -69,9 +69,9 @@ var circleSongs = function(sketch) {
         top50_long = sketch.loadJSON('./resources/top50_long.json')
         features_long = sketch.loadJSON('./resources/features_long.json')
     }
-    
-    
-    sketch.setup =  function() {
+
+
+    sketch.setup = function() {
         let canvas1 = sketch.createCanvas(w, sketch.windowHeight);
         canvas1.parent('circle-viz')
         sketch.background(255);
@@ -82,7 +82,7 @@ var circleSongs = function(sketch) {
         description = document.querySelector('#description');
 
         setTimeout(initData(sketch), 1000);
-        
+
 
         const elementToAnimate = document.querySelector('#circle-viz');
         const observer = new IntersectionObserver((entries, observer) => {
@@ -91,22 +91,22 @@ var circleSongs = function(sketch) {
                     animating = true;
                     elementToAnimate.style.position = 'sticky';
                     elementToAnimate.style.top = '0';
-                    
+
                 } else {
                     animating = false;
                 }
             });
-        }, {threshold: 0.95});
+        }, { threshold: 0.95 });
         observer.observe(elementToAnimate);
 
     }
-    
+
     sketch.draw = function() {
         sketch.background(255);
-        sketch.translate(sketch.width/2, sketch.height/2)
+        sketch.translate(sketch.width / 2, sketch.height / 2)
 
         let content;
-        if(t < 0.35) {
+        if (t < 0.35) {
             content = "Al comienzo del año, Spotify recomendaba canciones mas populares y similares, concentradas en una sola región."
         } else if (t >= 0.35 && t < 0.65) {
             content = "Con el paso de los meses, las recomendaciones se volvieron mas variadas y menos populares."
@@ -117,15 +117,15 @@ var circleSongs = function(sketch) {
         description.textContent = content;
 
         for (let i = 0; i < data.length; i++) {
-            sketch.fill(150 + i*50);
+            sketch.fill(150 + i * 50);
             data[i].display(sketch);
         }
-    
+
         // Circulo que rodea
         for (let i = 0; i < featuresSong; i++) {
             let angle = sketch.map(i, 0, featuresSong, 0, sketch.TWO_PI);
             sketch.push();
-            sketch.rotate(angle + sketch.PI/2)
+            sketch.rotate(angle + sketch.PI / 2)
             rotateText(0, 0, 300, features_names[i], sketch)
             sketch.pop();
         }
@@ -163,7 +163,7 @@ function rotateText(x, y, radius, txt, sketch) {
     sketch.textAlign(sketch.CENTER, sketch.BASELINE)
     sketch.textSize(16)
     sketch.textStyle(sketch.BOLD)
-    sketch.fill(200, 50, 50)
+    sketch.fill(0, 143, 57)
 
     // https://p5js.org/reference/#/p5/push
     // Save the current translation matrix so it can be reset
@@ -195,7 +195,7 @@ function rotateText(x, y, radius, txt, sketch) {
 // new p5(circleSongs);
 var p5sk;
 window.onload = () => {
-  p5sk = new p5(circleSongs);
+    p5sk = new p5(circleSongs);
 };
 
 function initData(sketch) {
@@ -209,10 +209,10 @@ function initData(sketch) {
         let songFea = features_short.audio_features[i];
         let songFea2 = features_medium.audio_features[i];
         let songFea3 = features_long.audio_features[i];
-        
+
         let s = new Song(i)
         data.push(s);
-            
+
         let fin_pos_short = sketch.createVector(0, 0);
         let fin_pos_medium = sketch.createVector(0, 0);
         let fin_pos_long = sketch.createVector(0, 0);
