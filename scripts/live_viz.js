@@ -24,7 +24,6 @@ let songPlaying = function(sketch) {
     canvas2.parent('song-display');
     
     sketch.angleMode(sketch.DEGREES);
-    fft = new p5.FFT();
     
     sketch.song.onended(() => {
       sketch.noLoop();
@@ -43,6 +42,7 @@ let songPlaying = function(sketch) {
     }
     
     sketch.noLoop();
+    playResume();
     canvas2.mousePressed(playResume)
   }
 
@@ -190,6 +190,7 @@ let songPlaying2 = function(sketch) {
     }
     
     sketch.noLoop();
+    playResume();
     canvas2.mousePressed(playResume)
   }
 
@@ -337,6 +338,7 @@ let songPlaying3 = function(sketch) {
     }
     
     sketch.noLoop();
+    playResume();
     canvas2.mousePressed(playResume)
   }
 
@@ -484,6 +486,7 @@ let songPlaying4 = function(sketch) {
     }
     
     sketch.noLoop();
+    playResume();
     canvas2.mousePressed(playResume)
   }
 
@@ -631,6 +634,7 @@ let songPlaying5 = function(sketch) {
     }
     
     sketch.noLoop();
+    playResume();
     canvas2.mousePressed(playResume)
   }
 
